@@ -209,42 +209,24 @@
     </div>
   </div>
 
-  <!-- RELIEF -->
+ <!-- CEFALY -->
   <div class="section">
-    <div class="section-title">Relief methods</div>
+    <div class="section-title">Cefaly sessions</div>
     <div class="field">
-      <div class="check-row"><input type="checkbox" id="icePackCheck" onchange="toggle('icePackDetails',this.checked);markDirty()"><label for="icePackCheck">Ice pack</label></div>
-      <div class="reveal check-indent" id="icePackDetails">
+      <div class="check-row"><input type="checkbox" id="acuteCheck" onchange="toggle('acuteDetails',this.checked);markDirty()"><label for="acuteCheck">Acute session</label></div>
+      <div class="reveal check-indent" id="acuteDetails">
         <div class="tri-row">
-          <button class="tri-btn" onclick="setTri('icePackRelief',0,'relief-good',this)">Good relief</button>
-          <button class="tri-btn" onclick="setTri('icePackRelief',1,'relief-some',this)">Some relief</button>
-          <button class="tri-btn" onclick="setTri('icePackRelief',2,'relief-none',this)">No relief</button>
+          <button class="tri-btn" onclick="setTri('acuteRelief',0,'relief-good',this)">Good relief</button>
+          <button class="tri-btn" onclick="setTri('acuteRelief',1,'relief-some',this)">Some relief</button>
+          <button class="tri-btn" onclick="setTri('acuteRelief',2,'relief-none',this)">No relief</button>
         </div>
       </div>
-    </div>
+<div class="divider"></div>
     <div class="field">
-      <div class="check-row"><input type="checkbox" id="heatPadCheck" onchange="toggle('heatPadDetails',this.checked);markDirty()"><label for="heatPadCheck">Heating pad</label></div>
-      <div class="reveal check-indent" id="heatPadDetails">
-        <div class="tri-row">
-          <button class="tri-btn" onclick="setTri('heatPadRelief',0,'relief-good',this)">Good relief</button>
-          <button class="tri-btn" onclick="setTri('heatPadRelief',1,'relief-some',this)">Some relief</button>
-          <button class="tri-btn" onclick="setTri('heatPadRelief',2,'relief-none',this)">No relief</button>
-        </div>
-      </div>
+      <div class="field-label">Prevent session</div>
+      <div class="check-row"><input type="checkbox" id="preventCheck" onchange="markDirty()"><label for="preventCheck">Completed</label></div>
+      <div class="check-row"><input type="checkbox" id="preventMissed" onchange="markDirty()"><label for="preventMissed">Missed</label></div>
     </div>
-    <div class="field">
-      <div class="check-row"><input type="checkbox" id="massageCheck" onchange="toggle('massageDetails',this.checked);markDirty()"><label for="massageCheck">Massage / cupping</label></div>
-      <div class="reveal check-indent" id="massageDetails">
-        <div class="tri-row">
-          <button class="tri-btn" onclick="setTri('massageRelief',0,'relief-good',this)">Good relief</button>
-          <button class="tri-btn" onclick="setTri('massageRelief',1,'relief-some',this)">Some relief</button>
-          <button class="tri-btn" onclick="setTri('massageRelief',2,'relief-none',this)">No relief</button>
-        </div>
-      </div>
-    </div>
-    <div class="field">
-      <div class="field-label">Other</div>
-      <textarea id="reliefOther" placeholder="Other relief methods used..." oninput="markDirty()"></textarea>
     </div>
   </div>
 
