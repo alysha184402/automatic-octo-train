@@ -504,6 +504,8 @@ var SCHEMA = [
   'medMorning','medMorningLate','medMorningMissed',
   'medEvening','medEveningLate','medEveningMissed',
   'medAdditional',
+ 'acuteCheck','acuteRelief',
+ 'preventCheck','preventMissed',
   'icePack','icePackRelief',
   'heatPad','heatPadRelief',
   'massage','massageRelief',
@@ -531,6 +533,7 @@ var DEFAULTS = {
   nap:false, napQuality:'none', energy:'none', waterIntake:0,
   medMorning:false, medMorningLate:false, medMorningMissed:false,
   medEvening:false, medEveningLate:false, medEveningMissed:false, medAdditional:'',
+ acuteCheck:false, acuteRelief:'none', preventCheck:false, preventMissed:false,
   icePack:false, icePackRelief:'none', heatPad:false, heatPadRelief:'none',
   massage:false, massageRelief:'none', reliefOther:'',
   mood:'none', cognition:'none', stress:'none',
@@ -559,6 +562,7 @@ var EXERCISE_LABELS = ['None','Mild','Moderate','Intense'];
 var TRI_KEYS = ['sleepQuality','napQuality','energy','icePackRelief','heatPadRelief','massageRelief','cognition','stress','migraine','earPain','bodyPain','muscleTension','lightheadSev','palpSev','eyesNoseSev'];
 var TRI_STYLES = {
   sleepQuality:['good','okay','bad'], napQuality:['good','okay','bad'], energy:['good','okay','bad'],
+ acuteRelief:['relief-good','relief-some','relief-none'],
   icePackRelief:['relief-good','relief-some','relief-none'],
   heatPadRelief:['relief-good','relief-some','relief-none'],
   massageRelief:['relief-good','relief-some','relief-none'],
@@ -714,6 +718,9 @@ function collectData() {
     medMorning:cbVal('medMorning'), medMorningLate:cbVal('medMorningLate'), medMorningMissed:cbVal('medMorningMissed'),
     medEvening:cbVal('medEvening'), medEveningLate:cbVal('medEveningLate'), medEveningMissed:cbVal('medEveningMissed'),
     medAdditional:cb('medAdditional').value||'',
+   acuteCheck: cbVal('acuteCheck'),
+   acuteRelief:cbVal('acuteCheck')?(triState.acuteRelief!==undefined?triState.acuteRelief:'none'):'none',
+   preventCheck:cbVal('preventCheck'), preventMissed:cbVal('preventMissed'),
     icePack:cbVal('icePackCheck'),
     icePackRelief:cbVal('icePackCheck')?(triState.icePackRelief!==undefined?triState.icePackRelief:'none'):'none',
     heatPad:cbVal('heatPadCheck'),
@@ -769,6 +776,8 @@ function populateForm(d) {
   if(d.waterIntake!==undefined){cb('waterIntake').value=d.waterIntake;cb('waterVal').textContent=d.waterIntake;}
   ['medMorning','medMorningLate','medMorningMissed','medEvening','medEveningLate','medEveningMissed'].forEach(function(id){if(d[id])cb(id).checked=true;});
   if(d.medAdditional)cb('medAdditional').value=d.medAdditional;
+ if(d.acuteCheck){cb('acuteCheck').checked=true;toggle('acuteDetails',true);restoreTriBtn('acuteRelief',d.acuteRelief);}
+ ['preventCheck','preventMissed'].forEach(function(id){if(d[id])cb(id).checked=true;});
   if(d.icePack){cb('icePackCheck').checked=true;toggle('icePackDetails',true);restoreTriBtn('icePackRelief',d.icePackRelief);}
   if(d.heatPad){cb('heatPadCheck').checked=true;toggle('heatPadDetails',true);restoreTriBtn('heatPadRelief',d.heatPadRelief);}
   if(d.massage){cb('massageCheck').checked=true;toggle('massageDetails',true);restoreTriBtn('massageRelief',d.massageRelief);}
